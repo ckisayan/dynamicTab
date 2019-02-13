@@ -1,8 +1,11 @@
 <div>
-    Loop 2010AA - Billing Provider Name
+    {{infoInjected.loopDisplayName}}
+</div>
+<div class="ui-inputgroup" *ngIf="DisplayField('EntityTypeQualifier')">
+    <input type="text" pInputText  placeholder="Entity Type Qualifier"/>    
 </div>
 <div class="ui-inputgroup">
-    <input type="text" pInputText  placeholder="First Name"/>    
+    <input type="text" pInputText  placeholder="First Name" *ngIf="DisplayField('FirstName')"/>    
 </div>
 
 <p>{{info}}</p>

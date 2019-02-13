@@ -15,8 +15,25 @@ export class SegmentNm1Component implements OnInit {
     // console.log('inside nm1');
     // this.info = this.infoInjected as (Nm1Segment);
     // this.info = this.infoInjected;
-    console.log ('inside segmentNm1.');
-    // console.log ('inside segmentNm1.' + this.info.firstName);
+    // console.log ('inside segmentNm1.');
+    console.log ('inside segmentNm1.' + this.infoInjected.loopDisplayName);
   }
+  DisplayField(fieldName) {
+    let retVal = true;
+    switch (fieldName) {
+      case 'FirstName':
+        // TODO:  some login
+        if (this.infoInjected.loopCode === '85') {
+          retVal = true;
+        } else {
+          retVal = false;
+        }
 
+        break;
+      default:
+        retVal = true;
+        break;
+    }
+    return retVal;
+  }
 }

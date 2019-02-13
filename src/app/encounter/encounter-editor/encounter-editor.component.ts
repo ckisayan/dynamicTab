@@ -2,7 +2,7 @@ import { Component, OnInit, InjectionToken, Injector, ReflectiveInjector, Input,
 import { TitleComponent, TITLE} from '../title/title.component';
 import { SegmentNm1Component } from '../segment-nm1/segment-nm1.component';
 import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
-import { NM1_SEGMENTPROVIDER } from '../common';
+import { NM1_SEGMENTPROVIDER, N3N4_SEGMENTNAME } from '../common';
 import {Nm1Segment} from '../entity/nm1Segment';
 import { SegmentRefComponent } from '../segment-ref/segment-ref.component';
 
@@ -21,7 +21,22 @@ export class EncounterEditorComponent implements OnInit {
       TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
     },
   ];
-
+  public segmentTabPayToAddressname = [
+    {
+      segmentName: 'NM1',
+      component: this.getComponent('NM1'),
+      entity: this.getEntity('87', 'NM1'),
+      X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+      TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+    },
+    {
+      segmentName: N3N4_SEGMENTNAME,
+      component: this.getComponent(N3N4_SEGMENTNAME),
+      entity: this.getEntity('87', N3N4_SEGMENTNAME),
+      X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+      TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+    },
+  ];
   public segmentTabBillingProviderName = [
     {
       segmentName: 'NM1',
@@ -33,7 +48,7 @@ export class EncounterEditorComponent implements OnInit {
     {
       segmentName: 'N3/N4',
       component: this.getComponent(''),
-      entity: this.getEntity('85', 'N3/N4'),
+      entity: this.getEntity('85', N3N4_SEGMENTNAME),
       X12Type: '837|835', // if billing provider is applicable to 835 type then specify
       TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
     },
@@ -97,6 +112,9 @@ export class EncounterEditorComponent implements OnInit {
       case 'BillingProviderName':
         tabLocal = this.segmentTabBillingProviderName;
         break;
+      case 'PayToAddressname':
+        tabLocal = this.segmentTabPayToAddressname;
+        break;
       default:
         tabLocal =  this.segmentTabDefault;
         break;
@@ -106,13 +124,27 @@ export class EncounterEditorComponent implements OnInit {
   getTabs(X12Type) {
 
   }
-  getEntity(loopId, segmentName) {
+  getEntity(loopCode, segmentName) {
     const nm1 = new Nm1Segment();
-    nm1.segmentName = 'NM1';
-    nm1.X12Type = 'P'; // for pro
-    nm1.entityTypeQualifier = loopId;
-    nm1.firstName = 'Chris';
-    nm1.lastNameOrgName = 'Isayan';
+    nm1.segmentName = segmentName;
+    nm1.loopCode = loopCode;
+    nm1.X12Type = 'P'; // for pro - set from json returned from API
+    switch (loopCode) {
+      case '85':
+        nm1.loopDisplayName = 'Loop 2010AA - Billing Provider Name';
+        nm1.loopId = '2010AA';
+        nm1.entityTypeQualifier = '01'; // person
+        nm1.firstName = 'Chris';
+        nm1.lastNameOrgName = 'Isayan';
+        break;
+      case '87':
+        nm1.loopDisplayName = 'Loop 2010AB - Billing Provider Name';
+        nm1.loopId = '2010AB';
+        nm1.entityTypeQualifier = '01'; // person
+        break;
+      default:
+        break;
+    }
     // console.log(nm1);
     return nm1;
   }
