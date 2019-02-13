@@ -18,8 +18,8 @@ export class EncounterEditorConfig {
       private segmentTabPayToAddressName = [
         {
           segmentName: 'NM1',
-          component: this.getComponentLocal('NM1'),
-          entity: this.getEntityLocal('87', 'NM1'),
+          component: this.getComponentLocal(NM1_SEGMENTNAME),
+          entity: this.getEntityLocal('87', NM1_SEGMENTNAME),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
@@ -34,14 +34,14 @@ export class EncounterEditorConfig {
 
       private segmentTabBillingProviderName = [
         {
-          segmentName: 'NM1',
-          component: this.getComponentLocal('NM1'),
-          entity: this.getEntityLocal('85', 'NM1'),
+          segmentName: NM1_SEGMENTNAME,
+          component: this.getComponentLocal(NM1_SEGMENTNAME),
+          entity: this.getEntityLocal('85', NM1_SEGMENTNAME),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
         {
-          segmentName: 'N3/N4',
+          segmentName: N3N4_SEGMENTNAME,
           component: this.getComponentLocal(''),
           entity: this.getEntityLocal('85', N3N4_SEGMENTNAME),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
@@ -62,7 +62,38 @@ export class EncounterEditorConfig {
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
       ];
-
+      public dynamicSection2000Tabs = [
+        {
+            label: 'BILLING PROVIDER NAME',
+            segment: this.getSegmentLocal('BillingProviderName'),
+            X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+            TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+            label: 'PAY-TO ADDRESS NAME',
+            segment: this.getSegmentLocal('PayToAddressname'),
+            X12Type: '837|835',
+            TypeOf837: 'Professional|Institutional|Dental'
+        },
+        {
+            label: 'PAY-TO PLAN NAME',
+            segment: this.getSegmentLocal('PayToPlanName'),
+            X12Type: '837|835',
+            TypeOf837: 'Professional|Institutional|Dental'
+        },
+        {
+            label: 'SUBSCRIBER NAME',
+            segment: this.getSegmentLocal('SubscriberName'),
+            X12Type: '837|835',
+            TypeOf837: 'Professional|Institutional|Dental'
+        },
+        {
+            label: 'PAYER NAME',
+            segment: this.getSegmentLocal('PayerName'),
+            X12Type: '837|835',
+            TypeOf837: 'Professional|Institutional|Dental'
+        }
+      ];
       public getDefaultTab() {
           return this.segmentTabDefault;
       }
@@ -71,6 +102,9 @@ export class EncounterEditorConfig {
       }
       public getBillingProviderNameTab() {
         return this.segmentTabBillingProviderName;
+      }
+      public getDynamicSection2000Tabs() {
+        return this.dynamicSection2000Tabs;
       }
       getComponentLocal(loopId: string) {
         let outletLocal = null;
@@ -110,6 +144,22 @@ export class EncounterEditorConfig {
         }
         // console.log(nm1);
         return nm1;
+    }
+
+    getSegmentLocal(loopId) {
+      let tabLocal = null;
+      switch (loopId) {
+        case 'BillingProviderName':
+          tabLocal = this.segmentTabBillingProviderName;
+          break;
+        case 'PayToAddressname':
+          tabLocal = this.segmentTabPayToAddressName;
+          break;
+        default:
+          tabLocal =  this.segmentTabDefault;
+          break;
+      }
+      return tabLocal;
     }
     getClassName() {
         return 'EncounterEditorConfig';
