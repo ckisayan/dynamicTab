@@ -16,17 +16,7 @@ export class EncounterEditorComponent implements OnInit {
   private encounterEditorConfig = new EncounterEditorConfig();
 
   public segmentTabDefault = this.encounterEditorConfig.getDefaultTab();
-  /*
-  public segmentTabDefault = [
-    {
-      segmentName: 'REF',
-      component: this.getComponent('REF'),
-      entity: this.getEntity('85', 'REF'),
-      X12Type: '837|835', // if billing provider is applicable to 835 type then specify
-      TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
-    },
-  ];
-  */
+
   public segmentTabPayToAddressname = [
     {
       segmentName: 'NM1',
