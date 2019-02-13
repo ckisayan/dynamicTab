@@ -2,7 +2,10 @@ import { SegmentNm1Component } from '../segment-nm1/segment-nm1.component';
 import { SegmentRefComponent } from '../segment-ref/segment-ref.component';
 import { TitleComponent } from '../title/title.component';
 import { Nm1Segment } from '../entity/nm1Segment';
-import { NM1_SEGMENTPROVIDER, N3N4_SEGMENTNAME, NM1_SEGMENTNAME } from '../common';
+import { NM1_SEGMENTPROVIDER, N3N4_SEGMENTNAME, NM1_SEGMENTNAME, REF_SEGMENTNAME, PER_SEGMENTNAME, DMG_SEGMENTNAME,
+  BILLINGPROVIDERNAME_LOOP, PAYTOADDRESSNAME_LOOP, PAYTOPLANNAME_LOOP, SUBSCRIBERNAME_LOOP, PAYERNAME_LOOP } from '../common';
+import { SegmentN3N4Component } from '../segment-n3n4/segment-n3n4.component';
+import { SegmentPerComponent } from '../segment-per/segment-per.component';
 
 export class EncounterEditorConfig {
 
@@ -15,6 +18,7 @@ export class EncounterEditorConfig {
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
       ];
+
       private segmentTabPayToAddressName = [
         {
           segmentName: 'NM1',
@@ -31,6 +35,90 @@ export class EncounterEditorConfig {
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
       ];
+      private segmentTabPayerName = [
+        {
+          segmentName: 'NM1',
+          component: this.getComponentLocal(NM1_SEGMENTNAME),
+          entity: this.getEntityLocal('PR', NM1_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+          segmentName: N3N4_SEGMENTNAME,
+          component: this.getComponentLocal(N3N4_SEGMENTNAME),
+          entity: this.getEntityLocal('PR', N3N4_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+          segmentName: REF_SEGMENTNAME,
+          component: this.getComponentLocal(REF_SEGMENTNAME),
+          entity: this.getEntityLocal('PR', REF_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+      ];
+      private segmentTabSubscriberName = [
+        {
+          segmentName: 'NM1',
+          component: this.getComponentLocal(NM1_SEGMENTNAME),
+          entity: this.getEntityLocal('IL', NM1_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+          segmentName: N3N4_SEGMENTNAME,
+          component: this.getComponentLocal(N3N4_SEGMENTNAME),
+          entity: this.getEntityLocal('IL', N3N4_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+          segmentName: DMG_SEGMENTNAME,
+          component: this.getComponentLocal(DMG_SEGMENTNAME),
+          entity: this.getEntityLocal('IL', DMG_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+          segmentName: REF_SEGMENTNAME,
+          component: this.getComponentLocal(REF_SEGMENTNAME),
+          entity: this.getEntityLocal('IL', REF_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+          segmentName: PER_SEGMENTNAME,
+          component: this.getComponentLocal(PER_SEGMENTNAME),
+          entity: this.getEntityLocal('IL', PER_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+      ];
+
+      private segmentTabPayToPlanName = [
+        {
+          segmentName: 'NM1',
+          component: this.getComponentLocal(NM1_SEGMENTNAME),
+          entity: this.getEntityLocal('PE', NM1_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+          segmentName: N3N4_SEGMENTNAME,
+          component: this.getComponentLocal(N3N4_SEGMENTNAME),
+          entity: this.getEntityLocal('PE', N3N4_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+          segmentName: REF_SEGMENTNAME,
+          component: this.getComponentLocal(REF_SEGMENTNAME),
+          entity: this.getEntityLocal('PE', REF_SEGMENTNAME),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+      ];
 
       private segmentTabBillingProviderName = [
         {
@@ -42,22 +130,22 @@ export class EncounterEditorConfig {
         },
         {
           segmentName: N3N4_SEGMENTNAME,
-          component: this.getComponentLocal(''),
+          component: this.getComponentLocal(N3N4_SEGMENTNAME),
           entity: this.getEntityLocal('85', N3N4_SEGMENTNAME),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
         {
-          segmentName: 'REF',
-          component: this.getComponentLocal('REF'),
-          entity: this.getEntityLocal('85', 'REF'),
+          segmentName: REF_SEGMENTNAME,
+          component: this.getComponentLocal(REF_SEGMENTNAME),
+          entity: this.getEntityLocal('85', REF_SEGMENTNAME),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
         {
-          segmentName: 'PER',
-          component: this.getComponentLocal(''),
-          entity: this.getEntityLocal('85', 'REF'),
+          segmentName: PER_SEGMENTNAME,
+          component: this.getComponentLocal(PER_SEGMENTNAME),
+          entity: this.getEntityLocal('85', PER_SEGMENTNAME),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
@@ -65,31 +153,31 @@ export class EncounterEditorConfig {
       public dynamicSection2000Tabs = [
         {
             label: 'BILLING PROVIDER NAME',
-            segment: this.getSegmentLocal('BillingProviderName'),
+            segment: this.getSegmentLocal(BILLINGPROVIDERNAME_LOOP),
             X12Type: '837|835', // if billing provider is applicable to 835 type then specify
             TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
         {
             label: 'PAY-TO ADDRESS NAME',
-            segment: this.getSegmentLocal('PayToAddressname'),
+            segment: this.getSegmentLocal(PAYTOADDRESSNAME_LOOP),
             X12Type: '837|835',
             TypeOf837: 'Professional|Institutional|Dental'
         },
         {
             label: 'PAY-TO PLAN NAME',
-            segment: this.getSegmentLocal('PayToPlanName'),
+            segment: this.getSegmentLocal(PAYTOPLANNAME_LOOP),
             X12Type: '837|835',
             TypeOf837: 'Professional|Institutional|Dental'
         },
         {
             label: 'SUBSCRIBER NAME',
-            segment: this.getSegmentLocal('SubscriberName'),
+            segment: this.getSegmentLocal(SUBSCRIBERNAME_LOOP),
             X12Type: '837|835',
             TypeOf837: 'Professional|Institutional|Dental'
         },
         {
             label: 'PAYER NAME',
-            segment: this.getSegmentLocal('PayerName'),
+            segment: this.getSegmentLocal(PAYERNAME_LOOP),
             X12Type: '837|835',
             TypeOf837: 'Professional|Institutional|Dental'
         }
@@ -112,8 +200,14 @@ export class EncounterEditorConfig {
           case NM1_SEGMENTNAME:
             outletLocal =  SegmentNm1Component;
             break;
-          case 'REF':
+          case N3N4_SEGMENTNAME:
+            outletLocal =  SegmentN3N4Component;
+            break;
+          case REF_SEGMENTNAME:
             outletLocal =  SegmentRefComponent;
+            break;
+          case PER_SEGMENTNAME:
+            outletLocal =  SegmentPerComponent;
             break;
           default:
             outletLocal =  TitleComponent;
@@ -128,6 +222,7 @@ export class EncounterEditorConfig {
         nm1.X12Type = 'P'; // for pro - set from json returned from API
         switch (loopCode) {
           case '85':
+            // there will be a service that gets the data from store and populates below.
             nm1.loopDisplayName = 'Loop 2010AA - Billing Provider Name';
             nm1.loopId = '2010AA';
             nm1.entityTypeQualifier = '01'; // person
@@ -149,11 +244,20 @@ export class EncounterEditorConfig {
     getSegmentLocal(loopId) {
       let tabLocal = null;
       switch (loopId) {
-        case 'BillingProviderName':
+        case BILLINGPROVIDERNAME_LOOP:
           tabLocal = this.segmentTabBillingProviderName;
           break;
-        case 'PayToAddressname':
+        case PAYTOADDRESSNAME_LOOP:
           tabLocal = this.segmentTabPayToAddressName;
+          break;
+        case PAYTOPLANNAME_LOOP:
+          tabLocal = this.segmentTabPayToPlanName;
+          break;
+        case SUBSCRIBERNAME_LOOP:
+          tabLocal = this.segmentTabSubscriberName;
+          break;
+        case PAYERNAME_LOOP:
+          tabLocal = this.segmentTabPayerName;
           break;
         default:
           tabLocal =  this.segmentTabDefault;

@@ -13,8 +13,10 @@ import {TabViewModule} from 'primeng/tabview';
 import {InputTextModule} from 'primeng/inputtext';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
-import { NM1_SEGMENTPROVIDER} from './encounter/common';
-import { Nm1Segment } from './encounter/entity/nm1Segment';
+
+import { SegmentN3N4Component } from './encounter/segment-n3n4/segment-n3n4.component';
+import { SegmentPerComponent } from './encounter/segment-per/segment-per.component';
+import { SegmentDmgComponent } from './encounter/segment-dmg/segment-dmg.component';
 
 
 
@@ -28,9 +30,14 @@ import { Nm1Segment } from './encounter/entity/nm1Segment';
     TitleComponent,
     SegmentNm1Component,
     SegmentRefComponent,
+    SegmentN3N4Component,
+    SegmentPerComponent,
+    SegmentDmgComponent,
+
 
   ],
-  entryComponents: [TitleComponent, SegmentNm1Component, SegmentRefComponent],
+  entryComponents: [TitleComponent, SegmentNm1Component, SegmentRefComponent, SegmentN3N4Component,
+    SegmentPerComponent, SegmentDmgComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
