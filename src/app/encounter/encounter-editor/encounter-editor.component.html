@@ -1,0 +1,34 @@
+<div>
+
+  <div class="ui-g" style="margin-bottom:10px">
+    <div class="ui-g-12">
+      <span class="first" style="font-weight: bold">Type of X12</span> &nbsp; &nbsp; &nbsp;
+      <p-radioButton name="TypeOfX12" value="837" label="837" [(ngModel)]="selectedTypeOfX12" inputId="opt1">
+      </p-radioButton>&nbsp;
+      <p-radioButton name="TypeOfX12" value="835" label="835" [(ngModel)]="selectedTypeOfX12" inputId="opt2">
+      </p-radioButton>
+      &nbsp; &nbsp; &nbsp; <span class="first" style="font-weight: bold">Type of 837</span> &nbsp; &nbsp; &nbsp;
+      <p-radioButton name="TypeOfX835" value="Professional" label="Professional" [(ngModel)]="selectedTypeOf837"
+        inputId="opt3"></p-radioButton>&nbsp;
+      <p-radioButton name="TypeOfX835" value="Institutional" label="Institutional" [(ngModel)]="selectedTypeOf837"
+        inputId="opt4"></p-radioButton>&nbsp;
+      <p-radioButton name="TypeOfX835" value="Dental" label="Dental" [(ngModel)]="selectedTypeOf837" inputId="opt5">
+      </p-radioButton>&nbsp;
+    </div>
+  </div>
+
+</div>
+<div>
+  <p-tabView>
+    <p-tabPanel [header]="tab.label" *ngFor="let tab of dynamicTabs; let i = index" [selected]="i == 0">
+      <p-tabView>
+        <p-tabPanel [header]="segment.segmentName" *ngFor="let segment of tab.segment;let j = index"
+          [selected]="j == 0">
+          <ng-container
+            *ngComponentOutlet="segment.component; injector: getInjector(segment.entity); content: myContent">
+          </ng-container>
+        </p-tabPanel>
+      </p-tabView>
+    </p-tabPanel>
+  </p-tabView>
+</div>
