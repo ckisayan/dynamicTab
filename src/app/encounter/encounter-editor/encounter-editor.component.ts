@@ -5,13 +5,18 @@ import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
 import { NM1_SEGMENTPROVIDER, N3N4_SEGMENTNAME } from '../common';
 import {Nm1Segment} from '../entity/nm1Segment';
 import { SegmentRefComponent } from '../segment-ref/segment-ref.component';
-
+import {EncounterEditorConfig} from './encounter-editor-config';
 @Component({
   selector: 'app-encounter-editor',
   templateUrl: './encounter-editor.component.html',
   styleUrls: ['./encounter-editor.component.css']
 })
 export class EncounterEditorComponent implements OnInit {
+
+  private encounterEditorConfig = new EncounterEditorConfig();
+
+  public segmentTabDefault = this.encounterEditorConfig.getDefaultTab();
+  /*
   public segmentTabDefault = [
     {
       segmentName: 'REF',
@@ -21,6 +26,7 @@ export class EncounterEditorComponent implements OnInit {
       TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
     },
   ];
+  */
   public segmentTabPayToAddressname = [
     {
       segmentName: 'NM1',
