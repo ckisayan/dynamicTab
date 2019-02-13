@@ -1,8 +1,10 @@
 import { Component, OnInit, InjectionToken, Injector, ReflectiveInjector, Input, Inject, Injectable } from '@angular/core';
 import { TitleComponent, TITLE} from '../title/title.component';
-import { SegmentNm1Component, SEGMENTPROVIDER } from '../segment-nm1/segment-nm1.component';
+import { SegmentNm1Component } from '../segment-nm1/segment-nm1.component';
+import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
 import { NM1_SEGMENTPROVIDER } from '../common';
 import {Nm1Segment} from '../entity/nm1Segment';
+import { SegmentRefComponent } from '../segment-ref/segment-ref.component';
 
 @Component({
   selector: 'app-encounter-editor',
@@ -10,14 +12,23 @@ import {Nm1Segment} from '../entity/nm1Segment';
   styleUrls: ['./encounter-editor.component.css']
 })
 export class EncounterEditorComponent implements OnInit {
-  public segmentTabs = [
+  public segmentTabDefault = [
+    {
+      segmentName: 'REF',
+      component: this.getComponent('REF'),
+      entity: this.getEntity('85', 'REF'),
+      X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+      TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+    },
+  ];
+
+  public segmentTabBillingProviderName = [
     {
       segmentName: 'NM1',
       component: this.getComponent('NM1'),
       entity: this.getEntity('85', 'NM1'),
       X12Type: '837|835', // if billing provider is applicable to 835 type then specify
       TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
-
     },
     {
       segmentName: 'N3/N4',
@@ -28,7 +39,7 @@ export class EncounterEditorComponent implements OnInit {
     },
     {
       segmentName: 'REF',
-      component: this.getComponent(''),
+      component: this.getComponent('REF'),
       entity: this.getEntity('85', 'REF'),
       X12Type: '837|835', // if billing provider is applicable to 835 type then specify
       TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -75,12 +86,22 @@ export class EncounterEditorComponent implements OnInit {
     }
   ];
 
-  outlet = SegmentNm1Component;
+  // outlet = SegmentNm1Component;
   myInjector: Injector;
   selectedTypeOfX12: string;
   selectedTypeOf837: string;
   getSegment(loopId) {
-    return this.segmentTabs;
+    let tabLocal = null;
+
+    switch (loopId) {
+      case 'BillingProviderName':
+        tabLocal = this.segmentTabBillingProviderName;
+        break;
+      default:
+        tabLocal =  this.segmentTabDefault;
+        break;
+    }
+    return tabLocal;
   }
   getTabs(X12Type) {
 
@@ -96,16 +117,19 @@ export class EncounterEditorComponent implements OnInit {
     return nm1;
   }
   getComponent(loopId) {
-    let outlet = null;
+    let outletLocal = null;
     switch (loopId) {
       case 'NM1':
-        outlet =  SegmentNm1Component;
+        outletLocal =  SegmentNm1Component;
+        break;
+      case 'REF':
+        outletLocal =  SegmentRefComponent;
         break;
       default:
-        outlet =  SegmentNm1Component;
+        outletLocal =  TitleComponent;
         break;
     }
-    return outlet;
+    return outletLocal;
   }
   constructor(private injector: Injector) {
 
@@ -120,13 +144,13 @@ export class EncounterEditorComponent implements OnInit {
         myInjector =  ReflectiveInjector.resolveAndCreate([{ provide: SEGMENTPROVIDER, useValue: entity }], this.injector);
         break;
       default:
-        myInjector =  ReflectiveInjector.resolveAndCreate([{ provide: SEGMENTPROVIDER, useValue: entity }], this.injector);
+        myInjector =  ReflectiveInjector.resolveAndCreate([{ provide: TitleComponent, useValue: '' }], this.injector);
         break;
     }
     return myInjector;
   }
   ngOnInit() {
-    console.log(this.dynamicTabs);
+    // console.log(this.dynamicTabs);
     this.selectedTypeOfX12 = '837';
     this.selectedTypeOf837 = 'Professional';
   }
