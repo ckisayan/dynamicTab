@@ -25,7 +25,7 @@
         <p-tabPanel [header]="segment.segmentName" *ngFor="let segment of tab.segment;let j = index"
           [selected]="j == 0">
           <ng-container
-            *ngComponentOutlet="segment.component; injector: getInjector(segment.entity); content: myContent">
+            *ngComponentOutlet="segment.component; injector: getInjector(segment.entity);">
           </ng-container>
         </p-tabPanel>
       </p-tabView>

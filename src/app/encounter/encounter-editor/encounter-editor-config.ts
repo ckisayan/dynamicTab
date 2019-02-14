@@ -235,6 +235,11 @@ export class EncounterEditorConfig {
             nm1.entityTypeQualifier = '01'; // person
             break;
           default:
+            nm1.loopDisplayName = 'Loop 2010AA - Billing Provider Name';
+            nm1.loopId = '2010AA';
+            nm1.entityTypeQualifier = '01'; // person
+            nm1.firstName = 'Chris';
+            nm1.lastNameOrgName = 'Isayan';
             break;
         }
         // console.log(nm1);

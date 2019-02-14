@@ -14,3 +14,9 @@ export const PAYTOADDRESSNAME_LOOP = 'PayToAddressName';
 export const PAYTOPLANNAME_LOOP = 'PayToPlanName';
 export const SUBSCRIBERNAME_LOOP = 'SubscriberName';
 export const PAYERNAME_LOOP = 'PayerName';
+
+export const BILLINGPROVIDER_LOOPCODE = '85';
+export const PAYTOPROVIDER_LOOPCODE = '87';
+export const PAYEE_LOOPCODE = 'PE';
+export const SUBSCRIBER_LOOPCODE = 'IL';
+export const PAYERNAME_LOOPCODE = 'PR';

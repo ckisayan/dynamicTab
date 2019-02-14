@@ -9,14 +9,15 @@ import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
 })
 export class SegmentNm1Component implements OnInit {
   // @Input() info: any;
+  private pageData = new Nm1Segment();
   constructor(@Inject(SEGMENTPROVIDER) private infoInjected: any) { }
 
   ngOnInit() {
-    // console.log('inside nm1');
-    // this.info = this.infoInjected as (Nm1Segment);
-    // this.info = this.infoInjected;
-    // console.log ('inside segmentNm1.');
-    console.log ('inside segmentNm1.' + this.infoInjected.loopDisplayName);
+    // it is best to copy to local make the modifications and on exit of the page send the data back to the parent.
+    if (typeof this.infoInjected !== 'undefined' && this.infoInjected !== null) {
+      this.pageData = Object.assign(this.infoInjected );
+    }
+    console.log ( this.pageData.loopDisplayName);
   }
   DisplayField(fieldName) {
     let retVal = true;
