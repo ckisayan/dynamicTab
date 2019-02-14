@@ -1,3 +1,10 @@
-<p>
-  segment-dmg works!
-</p>
+<div>
+  {{infoInjected.loopDisplayName}}
+</div>
+
+<div class="ui-inputgroup" *ngIf="displayElement('datePeriodFormatQualifier')">
+  <input type="text" pInputText placeholder="Date Period Format Qualifier"  />    
+</div>
+<div class="ui-inputgroup" *ngIf="displayElement('subscriberBirthDate')">
+  <input type="text" pInputText placeholder="Subscriber Birth Date" />    
+</div>

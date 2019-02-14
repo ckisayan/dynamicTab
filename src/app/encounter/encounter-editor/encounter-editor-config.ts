@@ -6,6 +6,8 @@ import { NM1_SEGMENTPROVIDER, N3N4_SEGMENTNAME, NM1_SEGMENTNAME, REF_SEGMENTNAME
   BILLINGPROVIDERNAME_LOOP, PAYTOADDRESSNAME_LOOP, PAYTOPLANNAME_LOOP, SUBSCRIBERNAME_LOOP, PAYERNAME_LOOP } from '../common';
 import { SegmentN3N4Component } from '../segment-n3n4/segment-n3n4.component';
 import { SegmentPerComponent } from '../segment-per/segment-per.component';
+import { SegmentDmgComponent } from '../segment-dmg/segment-dmg.component';
+import { DefaultSegment } from '../entity/defaultSegment';
 
 export class EncounterEditorConfig {
 
@@ -209,19 +211,33 @@ export class EncounterEditorConfig {
           case PER_SEGMENTNAME:
             outletLocal =  SegmentPerComponent;
             break;
-          default:
+        case DMG_SEGMENTNAME:
+            outletLocal =  SegmentDmgComponent;
+            break;
+        default:
             outletLocal =  TitleComponent;
             break;
         }
         return outletLocal;
     }
-    getEntityLocal(loopCode, segmentName) {
+    getEntityGeneric(loopCode) {
+        const entitylocal = new DefaultSegment();
+
+        entitylocal.X12Type = '837';
+        entitylocal.loopCode = loopCode;
+        entitylocal.X12Type = 'P';
+        entitylocal.loopDisplayName = 'Loop Generic';
+        entitylocal.loopId = '2Generic';
+        entitylocal.segmentName = 'Generic';
+        return entitylocal;
+    }
+    getEntityNM1(loopCode) {
         const nm1 = new Nm1Segment();
-        nm1.segmentName = segmentName;
+        nm1.segmentName = NM1_SEGMENTNAME;
         nm1.loopCode = loopCode;
         nm1.X12Type = 'P'; // for pro - set from json returned from API
         switch (loopCode) {
-          case '85':
+        case '85':
             // there will be a service that gets the data from store and populates below.
             nm1.loopDisplayName = 'Loop 2010AA - Billing Provider Name';
             nm1.loopId = '2010AA';
@@ -229,12 +245,12 @@ export class EncounterEditorConfig {
             nm1.firstName = 'Chris';
             nm1.lastNameOrgName = 'Isayan';
             break;
-          case '87':
+        case '87':
             nm1.loopDisplayName = 'Loop 2010AB - Billing Provider Name';
             nm1.loopId = '2010AB';
             nm1.entityTypeQualifier = '01'; // person
             break;
-          default:
+        default:
             nm1.loopDisplayName = 'Loop 2010AA - Billing Provider Name';
             nm1.loopId = '2010AA';
             nm1.entityTypeQualifier = '01'; // person
@@ -242,8 +258,22 @@ export class EncounterEditorConfig {
             nm1.lastNameOrgName = 'Isayan';
             break;
         }
-        // console.log(nm1);
         return nm1;
+    }
+    getEntityLocal(loopCode, segmentName) {
+        let entityGeneric = null;
+        switch (segmentName) {
+            case NM1_SEGMENTNAME:
+                entityGeneric = this.getEntityNM1(loopCode);
+                break;
+            // case DMG_SEGMENTNAME:
+            //    break;
+            default:
+                // DefaultSegment;
+                entityGeneric = this.getEntityGeneric(loopCode);
+                break;
+        }
+        return entityGeneric;
     }
 
     getSegmentLocal(loopId) {

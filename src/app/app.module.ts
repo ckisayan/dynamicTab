@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { SegmentN3N4Component } from './encounter/segment-n3n4/segment-n3n4.component';
 import { SegmentPerComponent } from './encounter/segment-per/segment-per.component';
 import { SegmentDmgComponent } from './encounter/segment-dmg/segment-dmg.component';
+import { DMG_SEGMENTPROVIDER } from './encounter/common';
 
 
 
@@ -48,7 +49,10 @@ import { SegmentDmgComponent } from './encounter/segment-dmg/segment-dmg.compone
 
 
   ],
-  providers: [ { provide: TITLE, useValue: '' }, { provide: SEGMENTPROVIDER, useValue: '' } ],
+  providers: [ { provide: TITLE, useValue: '' },
+    { provide: SEGMENTPROVIDER, useValue: '' },
+    { provide: DMG_SEGMENTPROVIDER, useValue: '' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,9 +19,9 @@ export class SegmentNm1Component implements OnInit {
     }
     console.log ( this.pageData.loopDisplayName);
   }
-  DisplayField(fieldName) {
+  displayElement(elementName) {
     let retVal = true;
-    switch (fieldName) {
+    switch (elementName) {
       case 'FirstName':
         // TODO:  some login
         if (this.infoInjected.loopCode === '85') {
@@ -29,7 +29,6 @@ export class SegmentNm1Component implements OnInit {
         } else {
           retVal = false;
         }
-
         break;
       default:
         retVal = true;

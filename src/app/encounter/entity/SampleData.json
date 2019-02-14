@@ -1,0 +1,8 @@
+{
+    "X12Document": {
+        "@type": "837",
+        "@typeOf837": "Professional",
+        "@version": ""
+        
+    }
+}

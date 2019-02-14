@@ -1,0 +1,47 @@
+<!-- **********************
+
+    Xml is for just for visualization, we should use json to keep the size of the data file small
+    
+    ************************
+-->
+<X12DocumentCollection>
+    <X12Document type="837" typeOf837="Professional" version="">
+        <SectionCollection>
+            <Section name="2010">
+                <Loop name="BillingProviderName">
+                    <SegmentCollection name="NM1">
+                        <Segment name="NM1">
+                            <Element name="EntityIdentifierCode">85</Element>
+                            <Element name="EntityTypeQualifier" value="Non-Person Entity">2</Element>
+                            <Element name="NameLastorOrganizationName">CAYUGA MEDICAL CENTER AT ITHACA</Element>
+                            <Element name="IdentificationCodeQualifier">XX</Element>
+                            <Element name="IdentificationCode">1962422733</Element>
+                        </Segment>
+                        <Segment name="REF">
+                            <Element name="ReferenceIdentificationQualifier">EI</Element> 
+                            <Element name="ReferenceIdentification">222325405</Element> 
+                        </Segment>
+                    </SegmentCollection>
+                </Loop>
+                <Loop name="SubscriberName">
+                    <SeqgmentCollection>
+                        <Segment name="NM1" >
+                            <Element name="EntityIdentifierCode">IL</Element>
+                            <Element name="EntityTypeQualifier">1</Element>
+                            <Element name="NameLastorOrganizationName">JACKSON</Element>
+                            <Element name="Nam First">RICHARD</Element>
+                            <Element name="IdentificationCodeQualifier">MI</Element>
+                            <Element name="IdentificationCode">553862164A</Element>
+                        </Segment>
+                        <Segment name="N3N4">
+                            <Element name="AddressInformation">447 VANBUSKIRK GULF RD</Element> 
+                            <Element name="CityName">NEWFIELD</Element> 
+                        </Segment>
+                    </SeqgmentCollection>
+                </Loop>
+            </Section>
+            <Section name="2300"></Section>
+            <Section name="2400"></Section>
+        </SectionCollection>
+    </X12Document>
+</X12DocumentCollection>

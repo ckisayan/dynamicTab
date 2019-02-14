@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
+import { DMG_SEGMENTPROVIDER } from '../common';
 
 @Component({
   selector: 'app-segment-dmg',
@@ -8,9 +8,11 @@ import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
 })
 export class SegmentDmgComponent implements OnInit {
 
-  constructor(@Inject(SEGMENTPROVIDER) private infoInjected: any) { }
+  constructor(@Inject(DMG_SEGMENTPROVIDER) private infoInjected: any) { }
 
   ngOnInit() {
   }
-
+  displayElement(elementName) {
+    return true;
+  }
 }
