@@ -9,7 +9,7 @@
         <SectionCollection>
             <Section name="2010">
                 <Loop name="BillingProviderName">
-                    <SegmentCollection name="NM1">
+                    <SegmentCollection>
                         <Segment name="NM1">
                             <Element name="EntityIdentifierCode">85</Element>
                             <Element name="EntityTypeQualifier" value="Non-Person Entity">2</Element>

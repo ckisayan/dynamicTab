@@ -24,11 +24,24 @@
       <p-tabView>
         <p-tabPanel [header]="segment.segmentName" *ngFor="let segment of tab.segment;let j = index"
           [selected]="j == 0">
-          <ng-container
-            *ngComponentOutlet="segment.component; injector: getInjector(segment.entity);">
+          <ng-container *ngComponentOutlet="segment.component;injector: segment.injector">
           </ng-container>
         </p-tabPanel>
       </p-tabView>
+    </p-tabPanel>
+  </p-tabView>
+</div>
+
+<div>
+  <p-tabView>
+    <p-tabPanel [header]="tab.label" *ngFor="let tab of dynamicSection2300Tabs; let i = index" [selected]="i == 0">
+        <p-tabView>          
+            <p-tabPanel [header]="segment.segmentName" *ngFor="let segment of tab.segment;let j = index"
+              [selected]="j == 0">              
+              <ng-container *ngComponentOutlet="segment.component;injector: segment.injector;">
+              </ng-container>
+            </p-tabPanel>
+          </p-tabView>
     </p-tabPanel>
   </p-tabView>
 </div>

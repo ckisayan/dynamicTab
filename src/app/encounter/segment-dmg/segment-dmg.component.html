@@ -1,10 +1,7 @@
-<div>
-  {{infoInjected.loopDisplayName}}
-</div>
-
-<div class="ui-inputgroup" *ngIf="displayElement('datePeriodFormatQualifier')">
-  <input type="text" pInputText placeholder="Date Period Format Qualifier"  />    
-</div>
-<div class="ui-inputgroup" *ngIf="displayElement('subscriberBirthDate')">
-  <input type="text" pInputText placeholder="Subscriber Birth Date" />    
-</div>
+<!-- <p-fieldset legend="{{infoInjected.loopDisplayName}}"> -->
+  <div class="ui-inputgroup" *ngIf="displayElement('datePeriodFormatQualifier')">
+    <input type="text" placeholder="Date Period Format Qualifier" />
+  </div>
+  <div class="ui-inputgroup" *ngIf="displayElement('subscriberBirthDate')">
+    <input type="text" placeholder="Subscriber Birth Date" />
+  </div>

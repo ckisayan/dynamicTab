@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DMG_SEGMENTPROVIDER } from '../common';
+import { DmgSegment } from '../entity/dmgSegment';
 
 @Component({
   selector: 'app-segment-dmg',
@@ -8,10 +9,12 @@ import { DMG_SEGMENTPROVIDER } from '../common';
 })
 export class SegmentDmgComponent implements OnInit {
 
-  constructor(@Inject(DMG_SEGMENTPROVIDER) private infoInjected: any) { }
+  constructor(public dmgSegment: DmgSegment) { }
 
   ngOnInit() {
+    console.log ( this.dmgSegment.loopDisplayName);
   }
+
   displayElement(elementName) {
     return true;
   }

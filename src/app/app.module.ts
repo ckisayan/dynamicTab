@@ -19,7 +19,8 @@ import { SegmentPerComponent } from './encounter/segment-per/segment-per.compone
 import { SegmentDmgComponent } from './encounter/segment-dmg/segment-dmg.component';
 import { DMG_SEGMENTPROVIDER } from './encounter/common';
 
-
+import {FieldsetModule} from 'primeng/fieldset';
+import { SegmentPwkComponent } from './encounter/segment-pwk/segment-pwk.component';
 
 
 
@@ -34,11 +35,12 @@ import { DMG_SEGMENTPROVIDER } from './encounter/common';
     SegmentN3N4Component,
     SegmentPerComponent,
     SegmentDmgComponent,
+    SegmentPwkComponent,
 
 
   ],
   entryComponents: [TitleComponent, SegmentNm1Component, SegmentRefComponent, SegmentN3N4Component,
-    SegmentPerComponent, SegmentDmgComponent],
+    SegmentPerComponent, SegmentDmgComponent, SegmentPwkComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,7 +48,7 @@ import { DMG_SEGMENTPROVIDER } from './encounter/common';
     InputTextModule,
     RadioButtonModule,
     FormsModule,
-
+    FieldsetModule
 
   ],
   providers: [ { provide: TITLE, useValue: '' },

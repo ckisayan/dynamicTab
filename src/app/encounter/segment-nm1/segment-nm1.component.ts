@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Nm1Segment } from '../entity/nm1Segment';
-import { InternalFormsSharedModule } from '@angular/forms/src/directives';
-import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
+// import { InternalFormsSharedModule } from '@angular/forms/src/directives';
+// import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
 @Component({
   selector: 'app-segment-nm1',
   templateUrl: './segment-nm1.component.html',
@@ -10,12 +10,12 @@ import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
 export class SegmentNm1Component implements OnInit {
   // @Input() info: any;
   private pageData = new Nm1Segment();
-  constructor(@Inject(SEGMENTPROVIDER) private infoInjected: any) { }
+  constructor(public nm1Segment: Nm1Segment) { }
 
   ngOnInit() {
     // it is best to copy to local make the modifications and on exit of the page send the data back to the parent.
-    if (typeof this.infoInjected !== 'undefined' && this.infoInjected !== null) {
-      this.pageData = Object.assign(this.infoInjected );
+    if (typeof this.nm1Segment !== 'undefined' && this.nm1Segment !== null) {
+      this.pageData = Object.assign(this.nm1Segment );
     }
     console.log ( this.pageData.loopDisplayName);
   }
@@ -24,7 +24,7 @@ export class SegmentNm1Component implements OnInit {
     switch (elementName) {
       case 'FirstName':
         // TODO:  some login
-        if (this.infoInjected.loopCode === '85') {
+        if (this.nm1Segment.loopCode === '85') {
           retVal = true;
         } else {
           retVal = false;
