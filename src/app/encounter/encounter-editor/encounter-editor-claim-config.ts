@@ -16,7 +16,6 @@ export class EncounterEditorClaimConfig {
         {
           segmentName: PWK_SEGMENTNAME,
           component: this.getComponentLocal(PWK_SEGMENTNAME),
-          entity: this.getEntityLocal('100', PWK_SEGMENTNAME),
           injector: this.getInjector2300(this.getEntityLocal('100', PWK_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -125,7 +124,7 @@ export class EncounterEditorClaimConfig {
     getInjector2300(entity) {
         let myInjector = null;
         const segmentName = entity.segmentName;
-        console.log ('inside injector code');
+        // console.log ('inside injector code');
         switch (segmentName) {
           case PWK_SEGMENTNAME:
             entity.loopDisplayName = 'this is a test';

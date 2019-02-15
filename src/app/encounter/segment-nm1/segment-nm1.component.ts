@@ -17,7 +17,7 @@ export class SegmentNm1Component implements OnInit {
     if (typeof this.nm1Segment !== 'undefined' && this.nm1Segment !== null) {
       this.pageData = Object.assign(this.nm1Segment );
     }
-    console.log ( this.pageData.loopDisplayName);
+    // console.log ( this.pageData.loopDisplayName);
   }
   displayElement(elementName) {
     let retVal = true;

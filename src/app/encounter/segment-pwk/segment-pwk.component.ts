@@ -11,8 +11,8 @@ export class SegmentPwkComponent implements OnInit {
   constructor(public pwkSegment: PwkSegment) { }
 
   ngOnInit() {
-    console.log('segment pwk initialized.');
-    console.log(this.pwkSegment);
+    // console.log('segment pwk initialized.');
+    // console.log(this.pwkSegment);
   }
 
 }

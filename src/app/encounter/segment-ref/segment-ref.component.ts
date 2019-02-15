@@ -11,7 +11,7 @@ import { RefSegment, RefSegmentCol } from '../entity/refSegment';
 export class SegmentRefComponent implements OnInit {
   private pageData = new RefSegmentCol();
   constructor(public refSegmentCol: RefSegmentCol) {
-    console.log(refSegmentCol);
+    // console.log(refSegmentCol);
     if (typeof this.refSegmentCol !== 'undefined' && this.refSegmentCol !== null) {
       this.pageData = Object.assign(this.refSegmentCol );
     }

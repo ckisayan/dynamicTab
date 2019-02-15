@@ -10,33 +10,52 @@
             <Section name="2010">
                 <Loop name="BillingProviderName">
                     <SegmentCollection>
-                        <Segment name="NM1">
-                            <Element name="EntityIdentifierCode">85</Element>
-                            <Element name="EntityTypeQualifier" value="Non-Person Entity">2</Element>
-                            <Element name="NameLastorOrganizationName">CAYUGA MEDICAL CENTER AT ITHACA</Element>
-                            <Element name="IdentificationCodeQualifier">XX</Element>
-                            <Element name="IdentificationCode">1962422733</Element>
+                        <Segment name="NM1" displayLabel="2010AA - BILLING PROVIDER NAME">
+                            <ElementSet order="1">
+                                <Element name="EntityIdentifierCode">85</Element>
+                                <Element name="EntityTypeQualifier" value="Non-Person Entity">2</Element>
+                                <Element name="NameLastorOrganizationName">CAYUGA MEDICAL CENTER AT ITHACA</Element>
+                                <Element name="IdentificationCodeQualifier">XX</Element>
+                                <Element name="IdentificationCode">1962422733</Element>
+                            </ElementSet>
                         </Segment>
-                        <Segment name="REF">
-                            <Element name="ReferenceIdentificationQualifier">EI</Element> 
-                            <Element name="ReferenceIdentification">222325405</Element> 
+                         <Segment name="N3N4" displayLabel="2010AA - BILLING PROVIDER NAME">
+                            <ElementSet order="1">
+                                <Element name="AddressInformation">447 VANBUSKIRK GULF RD</Element> 
+                                <Element name="CityName">NEWFIELD</Element> 
+                            </ElementSet>
+                        </Segment>
+                        <Segment name="REF" uniqueId="BillingProviderTaxIdentification" displayLabel="2010AA - Billing Provider Tax Identification">
+                            <ElementSet order="1">
+                                <Element name="ReferenceIdentificationQualifier">EI</Element> 
+                                <Element name="ReferenceIdentification">222325405</Element> 
+                            </ElementSet>
+                        </Segment>
+                        <Segment name="REF" uniqueId="BillingProviderUPINLicenseInformation" displayLabel="2010AA - Billing Provider UPIN/License Information">
+                            <ElementSet order="1">
+                                <Element name="ReferenceIdentificationQualifier">0B</Element> 
+                                <Element name="ReferenceIdentification">222325405</Element> 
+                            </ElementSet>
+                            <ElementSet order="2">
+                                <Element name="ReferenceIdentificationQualifier">1G</Element> 
+                                <Element name="ReferenceIdentification">XXX999</Element> 
+                            </ElementSet>
                         </Segment>
                     </SegmentCollection>
                 </Loop>
                 <Loop name="SubscriberName">
                     <SeqgmentCollection>
-                        <Segment name="NM1" >
-                            <Element name="EntityIdentifierCode">IL</Element>
-                            <Element name="EntityTypeQualifier">1</Element>
-                            <Element name="NameLastorOrganizationName">JACKSON</Element>
-                            <Element name="Nam First">RICHARD</Element>
-                            <Element name="IdentificationCodeQualifier">MI</Element>
-                            <Element name="IdentificationCode">553862164A</Element>
+                        <Segment name="NM1" displayLabel="2000B - SUBSCRIBER NAME">
+                            <ElementSet order="1">
+                                <Element name="EntityIdentifierCode">IL</Element>
+                                <Element name="EntityTypeQualifier">1</Element>
+                                <Element name="NameLastorOrganizationName">JACKSON</Element>
+                                <Element name="Nam First">RICHARD</Element>
+                                <Element name="IdentificationCodeQualifier">MI</Element>
+                                <Element name="IdentificationCode">553862164A</Element>
+                            </ElementSet>
                         </Segment>
-                        <Segment name="N3N4">
-                            <Element name="AddressInformation">447 VANBUSKIRK GULF RD</Element> 
-                            <Element name="CityName">NEWFIELD</Element> 
-                        </Segment>
+                       
                     </SeqgmentCollection>
                 </Loop>
             </Section>

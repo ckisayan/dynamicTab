@@ -12,7 +12,7 @@ export class SegmentDmgComponent implements OnInit {
   constructor(public dmgSegment: DmgSegment) { }
 
   ngOnInit() {
-    console.log ( this.dmgSegment.loopDisplayName);
+    // console.log ( this.dmgSegment.loopDisplayName);
   }
 
   displayElement(elementName) {
