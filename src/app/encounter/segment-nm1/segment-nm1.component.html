@@ -1,12 +1,12 @@
-<div>
-    {{pageData.loopDisplayName}}
-</div>
-<div class="ui-inputgroup" *ngIf="displayElement('EntityTypeQualifier')">
-    <input type="text" pInputText placeholder="Entity Type Qualifier"  />    
-</div>
-<div class="ui-inputgroup" *ngIf="displayElement('FirstName')">
-    <input type="text" pInputText placeholder="First Name" />    
-</div>
+<p-fieldset legend="{{pageData.loopDisplayName}}">
+    
+    <div class="ui-inputgroup" *ngIf="displayElement('EntityTypeQualifier')">
+        <input type="text" pInputText placeholder="Entity Type Qualifier" />
+    </div>
+    <div class="ui-inputgroup" *ngIf="displayElement('FirstName')">
+        <input type="text" pInputText placeholder="First Name" />
+    </div>
 
-<p>{{info}}</p>
+    <p>{{info}}</p>
 
+</p-fieldset>

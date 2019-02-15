@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,9 +10,9 @@ import { TitleComponent, TITLE } from './encounter/title/title.component';
 import { SegmentNm1Component } from './encounter/segment-nm1/segment-nm1.component';
 import { SEGMENTPROVIDER } from './encounter/SEGMENTPROVIDER';
 import { SegmentRefComponent } from './encounter/segment-ref/segment-ref.component';
-import {TabViewModule} from 'primeng/tabview';
-import {InputTextModule} from 'primeng/inputtext';
-import {RadioButtonModule} from 'primeng/radiobutton';
+import { TabViewModule } from 'primeng/tabview';
+import { InputTextModule } from 'primeng/inputtext';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
 
 import { SegmentN3N4Component } from './encounter/segment-n3n4/segment-n3n4.component';
@@ -48,7 +49,8 @@ import { SegmentPwkComponent } from './encounter/segment-pwk/segment-pwk.compone
     InputTextModule,
     RadioButtonModule,
     FormsModule,
-    FieldsetModule
+    FieldsetModule,
+    BrowserAnimationsModule
 
   ],
   providers: [ { provide: TITLE, useValue: '' },
