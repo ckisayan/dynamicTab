@@ -23,7 +23,7 @@ export class SegmentNm1Component implements OnInit {
     let retVal = true;
     switch (elementName) {
       case 'FirstName':
-        // TODO:  some login
+        // TODO:  some logic
         if (this.nm1Segment.loopCode === '85') {
           retVal = true;
         } else {

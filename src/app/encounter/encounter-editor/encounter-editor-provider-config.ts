@@ -10,8 +10,9 @@ import { SegmentDmgComponent } from '../segment-dmg/segment-dmg.component';
 import { DefaultSegment } from '../entity/defaultSegment';
 import { Injector } from '@angular/core';
 import { DmgSegment } from '../entity/dmgSegment';
+import { RefSegment, RefSegmentCol } from '../entity/refSegment';
 
-export class EncounterEditorConfig {
+export class EncounterEditorProviderConfig {
     constructor(private injector: Injector) {
         // console.log (injector);
     }
@@ -19,7 +20,6 @@ export class EncounterEditorConfig {
         {
           segmentName: REF_SEGMENTNAME,
           component: this.getComponentLocal(REF_SEGMENTNAME),
-          entity: this.getEntityLocal('85', REF_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('85', REF_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -30,7 +30,6 @@ export class EncounterEditorConfig {
         {
           segmentName: 'NM1',
           component: this.getComponentLocal(NM1_SEGMENTNAME),
-          entity: this.getEntityLocal('87', NM1_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('87', NM1_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -38,7 +37,6 @@ export class EncounterEditorConfig {
         {
           segmentName: N3N4_SEGMENTNAME,
           component: this.getComponentLocal(N3N4_SEGMENTNAME),
-          entity: this.getEntityLocal('87', N3N4_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('87', N3N4_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -48,7 +46,6 @@ export class EncounterEditorConfig {
         {
           segmentName: 'NM1',
           component: this.getComponentLocal(NM1_SEGMENTNAME),
-          entity: this.getEntityLocal('PR', NM1_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('PR', NM1_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -56,7 +53,6 @@ export class EncounterEditorConfig {
         {
           segmentName: N3N4_SEGMENTNAME,
           component: this.getComponentLocal(N3N4_SEGMENTNAME),
-          entity: this.getEntityLocal('PR', N3N4_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('PR', N3N4_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -64,7 +60,6 @@ export class EncounterEditorConfig {
         {
           segmentName: REF_SEGMENTNAME,
           component: this.getComponentLocal(REF_SEGMENTNAME),
-          entity: this.getEntityLocal('PR', REF_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('PR', REF_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -74,7 +69,6 @@ export class EncounterEditorConfig {
         {
           segmentName: 'NM1',
           component: this.getComponentLocal(NM1_SEGMENTNAME),
-          entity: this.getEntityLocal('IL', NM1_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('IL', NM1_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -82,7 +76,6 @@ export class EncounterEditorConfig {
         {
           segmentName: N3N4_SEGMENTNAME,
           component: this.getComponentLocal(N3N4_SEGMENTNAME),
-          entity: this.getEntityLocal('IL', N3N4_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('IL', N3N4_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -90,7 +83,6 @@ export class EncounterEditorConfig {
         {
           segmentName: DMG_SEGMENTNAME,
           component: this.getComponentLocal(DMG_SEGMENTNAME),
-          entity: this.getEntityLocal('IL', DMG_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('IL', DMG_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -98,7 +90,6 @@ export class EncounterEditorConfig {
         {
           segmentName: REF_SEGMENTNAME,
           component: this.getComponentLocal(REF_SEGMENTNAME),
-          entity: this.getEntityLocal('IL', REF_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('IL', REF_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -106,7 +97,6 @@ export class EncounterEditorConfig {
         {
           segmentName: PER_SEGMENTNAME,
           component: this.getComponentLocal(PER_SEGMENTNAME),
-          entity: this.getEntityLocal('IL', PER_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('IL', PER_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -117,7 +107,6 @@ export class EncounterEditorConfig {
         {
           segmentName: NM1_SEGMENTNAME,
           component: this.getComponentLocal(NM1_SEGMENTNAME),
-          entity: this.getEntityLocal('PE', NM1_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('NM1', NM1_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -125,7 +114,6 @@ export class EncounterEditorConfig {
         {
           segmentName: N3N4_SEGMENTNAME,
           component: this.getComponentLocal(N3N4_SEGMENTNAME),
-          entity: this.getEntityLocal('PE', N3N4_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('PE', N3N4_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -133,7 +121,6 @@ export class EncounterEditorConfig {
         {
           segmentName: REF_SEGMENTNAME,
           component: this.getComponentLocal(REF_SEGMENTNAME),
-          entity: this.getEntityLocal('PE', REF_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('PE', REF_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -144,7 +131,6 @@ export class EncounterEditorConfig {
         {
           segmentName: NM1_SEGMENTNAME,
           component: this.getComponentLocal(NM1_SEGMENTNAME),
-          entity: this.getEntityLocal('85', NM1_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('85', NM1_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -152,7 +138,6 @@ export class EncounterEditorConfig {
         {
           segmentName: N3N4_SEGMENTNAME,
           component: this.getComponentLocal(N3N4_SEGMENTNAME),
-          entity: this.getEntityLocal('85', N3N4_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('85', N3N4_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -160,7 +145,6 @@ export class EncounterEditorConfig {
         {
           segmentName: REF_SEGMENTNAME,
           component: this.getComponentLocal(REF_SEGMENTNAME),
-          entity: this.getEntityLocal('85', REF_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('85', REF_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -168,7 +152,6 @@ export class EncounterEditorConfig {
         {
           segmentName: PER_SEGMENTNAME,
           component: this.getComponentLocal(PER_SEGMENTNAME),
-          entity: this.getEntityLocal('85', PER_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('85', PER_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
@@ -281,14 +264,39 @@ export class EncounterEditorConfig {
         }
         return nm1;
     }
+    getEntityRef(loopCode) {
+      const refCol = new RefSegmentCol();
+      const refTax = new RefSegment();
+      refTax.segmentName = REF_SEGMENTNAME;
+      refTax.loopCode = loopCode;
+      refTax.X12Type = 'P'; // for pro - set from json returned from API
+      refTax.loopDisplayName = '2010AA - Billing Provider Tax Identification';
+      refTax.loopId = '2010AA';
+      refCol.TaxIdentifier = Object.assign(refTax);
+
+      const refUpn = new RefSegment();
+      refUpn.segmentName = REF_SEGMENTNAME;
+      refUpn.loopCode = loopCode;
+      refUpn.X12Type = 'P'; // for pro - set from json returned from API
+      refUpn.loopDisplayName = '2010AA - Billing Provider UPIN/License Information';
+      refUpn.loopId = '2010AA';
+
+      const refUpnLic = Array<RefSegment>();
+      refUpnLic.push(refUpn);
+      refUpnLic.push(refUpn);
+      refCol.UpnLicenseInformation = refUpnLic;
+
+      return refCol;
+    }
     getEntityLocal(loopCode, segmentName) {
         let entityGeneric = null;
         switch (segmentName) {
             case NM1_SEGMENTNAME:
                 entityGeneric = this.getEntityNM1(loopCode);
                 break;
-            // case DMG_SEGMENTNAME:
-            //    break;
+            case REF_SEGMENTNAME:
+                entityGeneric = this.getEntityRef(loopCode);
+                break;
             default:
                 // DefaultSegment;
                 entityGeneric = this.getEntityGeneric(loopCode, segmentName);
@@ -325,25 +333,6 @@ export class EncounterEditorConfig {
     getClassName() {
         return 'EncounterEditorConfig';
     }
-    getInjector2100(entity) {
-        let myInjector = null;
-        const segmentName = entity.segmentName;
-        switch (segmentName) {
-          case NM1_SEGMENTNAME:
-            // title = 'this comes from parent! custom for: ' + segmentName;
-            // console.log ('inside nm1' + segmentName);
-            myInjector =  Injector.create({providers: [{provide: Nm1Segment, useValue: entity, deps: []}], parent: this.injector});
-            break;
-          case DMG_SEGMENTNAME:
-            // console.log(segmentName);
-            myInjector =  Injector.create({providers: [{provide: DmgSegment, useValue: entity, deps: []}], parent: this.injector});
-            break;
-          default:
-            myInjector =  Injector.create({providers: [{provide: TitleComponent, useValue: entity, deps: []}], parent: this.injector});
-            break;
-        }
-        return myInjector;
-    }
     getInjector2010(entity) {
         let myInjector = null;
         const segmentName = entity.segmentName;
@@ -356,6 +345,9 @@ export class EncounterEditorConfig {
           case DMG_SEGMENTNAME:
             // console.log(segmentName);
             myInjector =  Injector.create({providers: [{provide: DmgSegment, useValue: entity, deps: []}], parent: this.injector});
+            break;
+          case REF_SEGMENTNAME:
+            myInjector =  Injector.create({providers: [{provide: RefSegmentCol, useValue: entity, deps: []}], parent: this.injector});
             break;
           default:
             myInjector =  Injector.create({providers: [{provide: TitleComponent, useValue: entity, deps: []}], parent: this.injector});

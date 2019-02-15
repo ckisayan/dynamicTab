@@ -1,5 +1,6 @@
 import { Component, OnInit, InjectionToken, Inject, Input } from '@angular/core';
 import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
+import { RefSegment, RefSegmentCol } from '../entity/refSegment';
 
 
 @Component({
@@ -8,11 +9,17 @@ import { SEGMENTPROVIDER } from '../SEGMENTPROVIDER';
   styleUrls: ['./segment-ref.component.css']
 })
 export class SegmentRefComponent implements OnInit {
-  // @Input() info: any;
-  constructor(@Inject(SEGMENTPROVIDER) private infoInjected: any) { }
-
+  private pageData = new RefSegmentCol();
+  constructor(public refSegmentCol: RefSegmentCol) {
+    console.log(refSegmentCol);
+    if (typeof this.refSegmentCol !== 'undefined' && this.refSegmentCol !== null) {
+      this.pageData = Object.assign(this.refSegmentCol );
+    }
+  }
+  displayElement(elementName) {
+    return true;
+  }
   ngOnInit() {
-    // console.log(this.infoInjected);
   }
 
 }

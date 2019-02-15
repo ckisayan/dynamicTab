@@ -1,6 +1,28 @@
-<div>
-  <div>Loop 2010AA - Billing Provider Name</div>
-  <div>Billing Provider Tax Identification</div>
-  <div>Billing Provider UPIN/License Information</div>
+<p-accordion>
+  <p-accordionTab header="{{pageData.TaxIdentifier.loopDisplayName}}" [selected]="true">
+    &nbsp;
+    <div class="ui-inputgroup" *ngIf="displayElement('ReferenceIdentQual')">
+      <span class="ui-float-label">
+        <input id="float-referenceIdentQual" type="text" pInputText
+          [(ngModel)]='pageData.TaxIdentifier.referenceIdentQual' size="30" />
+        <label for="float-referenceIdentQual">Reference Ident Qual</label>
+      </span>
+    </div>
+    &nbsp;
+    <div class="ui-inputgroup" *ngIf="displayElement('ReferenceIdent')">
+      <span class="ui-float-label">
+        <input id="float-referenceIdent" type="text" pInputText [(ngModel)]='pageData.TaxIdentifier.referenceIdent'
+          size="30" />
+        <label for="float-referenceIdent">Reference Ident</label>
+      </span>
+    </div>
+  </p-accordionTab>
+  <p-accordionTab header="{{pageData.loopId}} - Billing Provider UPIN/License Information">
+    &nbsp;
+    <p>
+      enumerate the same fields above based on what is coming in the data.
 
-</div>
+      Will need ability to add up to two refs
+    </p>
+  </p-accordionTab>
+</p-accordion>

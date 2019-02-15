@@ -1,12 +1,19 @@
-<p-fieldset legend="{{pageData.loopDisplayName}}">
-    
-    <div class="ui-inputgroup" *ngIf="displayElement('EntityTypeQualifier')">
-        <input type="text" pInputText placeholder="Entity Type Qualifier" />
-    </div>
-    <div class="ui-inputgroup" *ngIf="displayElement('FirstName')">
-        <input type="text" pInputText placeholder="First Name" />
-    </div>
-
-    <p>{{info}}</p>
-
-</p-fieldset>
+<p-accordion>
+    <p-accordionTab header="{{pageData.loopDisplayName}}" [selected]="true">
+        &nbsp;  
+        <div class="ui-inputgroup" *ngIf="displayElement('EntityTypeQualifier')">
+            <span class="ui-float-label">
+                <input id="float-entityTypeQualifier" type="text" pInputText [(ngModel)]='pageData.EntityTypeQualifier'
+                    size="20" />
+                <label for="float-entityTypeQualifier">Entity Type Qualifier</label>
+            </span>
+        </div>
+        &nbsp;
+        <div class="ui-inputgroup" *ngIf="displayElement('FirstName')">
+            <span class="ui-float-label">
+                <input id="float-firstName" type="text" pInputText [(ngModel)]='pageData.firstName' size="30"/>
+                <label for="float-firstName">First Name</label>
+            </span>
+        </div>
+    </p-accordionTab>
+</p-accordion>
