@@ -2,41 +2,57 @@ import { SegmentPwkComponent } from '../segment-pwk/segment-pwk.component';
 import { PwkSegment } from '../entity/pwkSegment';
 import { DefaultSegment } from '../entity/defaultSegment';
 import { Injector } from '@angular/core';
+import { NM1_SEGMENTNAME, N3N4_SEGMENTNAME, PWK_SEGMENTNAME } from '../common';
+import { EncounterEditorCommonConfig } from './encounter-editor-common-config';
 
 export const CLM_SEGMENTNAME = 'CLM';
-export const PWK_SEGMENTNAME = 'PWK';
+export const COB_LOOPNAME = 'COB';
 export const LOOPSEGMENTENUM_SEGMENT = 'SEGMENT';
 export const LOOPSEGMENTENUM_LOOP = 'LOOP';
 
-export class EncounterEditorClaimConfig {
-    constructor(private injector: Injector) {
-        // console.log (injector);
-    }
+export class EncounterEditorClaimConfig extends EncounterEditorCommonConfig {
+
     private segmentPWKName = [
         {
-          segmentName: PWK_SEGMENTNAME,
-          component: this.getComponentLocal(PWK_SEGMENTNAME),
-          injector: this.getInjector2300(this.getEntityLocal('100', PWK_SEGMENTNAME)),
+          segmentName: NM1_SEGMENTNAME,
+          component: this.getComponentLocal(NM1_SEGMENTNAME),
+          injector: this.getInjector2300(this.getEntityLocal('100', NM1_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify
           TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
     ];
+    private segment2300COB = [
+        {
+          segmentName: NM1_SEGMENTNAME,
+          component: this.getComponentLocal(NM1_SEGMENTNAME),
+          injector: this.getInjector2300(this.getEntityLocal('NM1', NM1_SEGMENTNAME)),
+          X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+          TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+        },
+        {
+            segmentName: N3N4_SEGMENTNAME,
+            component: this.getComponentLocal(N3N4_SEGMENTNAME),
+            injector: this.getInjector2300(this.getEntityLocal('IL', N3N4_SEGMENTNAME)),
+            X12Type: '837|835', // if billing provider is applicable to 835 type then specify
+            TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
+          },
+    ];
+
 
     public dynamicSection2300Tabs = [
-
-        /*
         {
-            label: CLM_SEGMENTNAME,
-            segment: this.getSegmentLocal(CLM_SEGMENTNAME),
-            isLoopOrSegment: this.getLoopOrSegment(CLM_SEGMENTNAME),
+            label: PWK_SEGMENTNAME,
+            segment: this.segmentPWKName,
+            isLoopOrSegment: LOOPSEGMENTENUM_LOOP, // this.getLoopOrSegment(PWK_SEGMENTNAME),
+            component: this.getComponentLocal(PWK_SEGMENTNAME),
+            injector: this.getInjector2300(this.getEntityLocal('100', PWK_SEGMENTNAME)),
             X12Type: '837|835', // if billing provider is applicable to 835 type then specify
             TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
-        */
         {
-            label: PWK_SEGMENTNAME,
-            segment: this.segmentPWKName, // this.getSegmentLocal(PWK_SEGMENTNAME),
-            isLoopOrSegment:  '', // this.getLoopOrSegment(PWK_SEGMENTNAME),
+            label: COB_LOOPNAME,
+            segment: this.getSegmentLocal(COB_LOOPNAME), // this.getSegmentLocal(PWK_SEGMENTNAME),
+            isLoopOrSegment: LOOPSEGMENTENUM_SEGMENT, // this.getLoopOrSegment(PWK_SEGMENTNAME),
             X12Type: '837|835', // if billing provider is applicable to 835 type then specify
             TypeOf837: 'Professional|Institutional|Dental' // if billing provider is applicable to 837 type then specify
         },
@@ -47,6 +63,9 @@ export class EncounterEditorClaimConfig {
         switch (segmentName) {
             case PWK_SEGMENTNAME:
                 entityGeneric = this.getEntityPWK(loopCode);
+                break;
+            case NM1_SEGMENTNAME:
+                entityGeneric = this.getEntityNM1(loopCode);
                 break;
             // case DMG_SEGMENTNAME:
             //    break;
@@ -83,17 +102,34 @@ export class EncounterEditorClaimConfig {
     public getDynamicSection2300Tabs() {
         return this.dynamicSection2300Tabs;
     }
+
+    getSegmentLocal(loopId) {
+        let tabLocal = null;
+        switch (loopId) {
+          case COB_LOOPNAME:
+            tabLocal = this.segment2300COB;
+            break;
+        default:
+            break;
+        }
+        return tabLocal;
+    }
+     /*
     getSegmentLocal(loopId) {
         let segmentElement = null;
         switch (loopId) {
             case PWK_SEGMENTNAME:
                 segmentElement = this.segmentPWKName;
                 break;
+            case NM1_SEGMENTNAME:
+                segmentElement = this.segment2300COB;
+                break;
             default:
-            break;
+                break;
         }
         return segmentElement;
     }
+    */
     getLoopOrSegment(tabName) {
         let loopOrSegment = LOOPSEGMENTENUM_SEGMENT;
         switch (tabName) {
@@ -107,9 +143,7 @@ export class EncounterEditorClaimConfig {
         }
         return loopOrSegment;
     }
-    getComponentLocal(segmentName) {
-        return SegmentPwkComponent;
-    }
+
     getEntityGeneric(loopCode, segmentName) {
         const entitylocal = new DefaultSegment();
         entitylocal.segmentName = segmentName;
@@ -120,7 +154,6 @@ export class EncounterEditorClaimConfig {
         entitylocal.loopId = '2Generic';
         return entitylocal;
     }
-
     getInjector2300(entity) {
         let myInjector = null;
         const segmentName = entity.segmentName;

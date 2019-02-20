@@ -67,7 +67,7 @@ export class EncounterEditorProviderConfig {
       ];
       private segmentTabSubscriberName = [
         {
-          segmentName: 'NM1',
+          segmentName: NM1_SEGMENTNAME,
           component: this.getComponentLocal(NM1_SEGMENTNAME),
           injector: this.getInjector2010(this.getEntityLocal('IL', NM1_SEGMENTNAME)),
           X12Type: '837|835', // if billing provider is applicable to 835 type then specify

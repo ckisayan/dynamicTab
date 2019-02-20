@@ -11,6 +11,8 @@ export const NM1_SEGMENTNAME = 'NM1';
 export const REF_SEGMENTNAME = 'REF';
 export const PER_SEGMENTNAME = 'PER';
 export const DMG_SEGMENTNAME = 'DMG';
+export const PWK_SEGMENTNAME = 'PWK';
+
 export const BILLINGPROVIDERNAME_LOOP = 'BillingProviderName';
 export const PAYTOADDRESSNAME_LOOP = 'PayToAddressName';
 export const PAYTOPLANNAME_LOOP = 'PayToPlanName';

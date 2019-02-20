@@ -35,13 +35,20 @@
 <div>
   <p-tabView>
     <p-tabPanel [header]="tab.label" *ngFor="let tab of dynamicSection2300Tabs; let i = index" [selected]="i == 0">
-        <p-tabView>          
-            <p-tabPanel [header]="segment.segmentName" *ngFor="let segment of tab.segment;let j = index"
-              [selected]="j == 0">              
-              <ng-container *ngComponentOutlet="segment.component;injector: segment.injector;">
+      <p-tabView>
+        
+        <div *ngIf="tab.isLoopOrSegment !== 'LOOP'" >
+          <p-tabPanel [header]="segment.segmentName" *ngFor="let segment of tab.segment;let j = index"
+            [selected]="j == 0">
+            <ng-container *ngComponentOutlet="segment.component;injector: segment.injector;">
+            </ng-container>
+          </p-tabPanel>
+        </div>
+        <div *ngIf="tab.isLoopOrSegment === 'LOOP' " >
+            <ng-container *ngComponentOutlet="tab.component;injector: tab.injector;">
               </ng-container>
-            </p-tabPanel>
-          </p-tabView>
+        </div>
+      </p-tabView>
     </p-tabPanel>
   </p-tabView>
 </div>
