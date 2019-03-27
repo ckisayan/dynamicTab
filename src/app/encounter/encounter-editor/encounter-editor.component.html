@@ -19,10 +19,10 @@
 
 </div>
 <div>
-  <p-tabView>
+  <p-tabView (onChange)="handleChange($event)" (onClose)="handleClose($event)">
     <p-tabPanel [header]="tab.label" *ngFor="let tab of dynamicSection2000Tabs; let i = index" [selected]="i == 0">
-      <p-tabView>
-        <p-tabPanel [header]="segment.segmentName" *ngFor="let segment of tab.segment;let j = index"
+      <p-tabView (onChange)="handleChange($event)" [activeIndex]="currentActiveIndex" [controlClose]="true"  (onClose)="handleClose($event)">
+        <p-tabPanel  [header]="segment.segmentName"  [closable]="true" *ngFor="let segment of tab.segment;let j = index"
           [selected]="j == 0">
           <ng-container *ngComponentOutlet="segment.component;injector: segment.injector">
           </ng-container>

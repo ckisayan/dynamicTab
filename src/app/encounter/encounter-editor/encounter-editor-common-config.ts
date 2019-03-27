@@ -6,7 +6,7 @@ import { SegmentNm1Component } from '../segment-nm1/segment-nm1.component';
 import { SegmentPwkComponent } from '../segment-pwk/segment-pwk.component';
 
 export abstract class EncounterEditorCommonConfig {
-    constructor(private injector: Injector) {
+    constructor(public injector: Injector) {
         // console.log (injector);
     }
 

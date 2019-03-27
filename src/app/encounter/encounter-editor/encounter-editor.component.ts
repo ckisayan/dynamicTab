@@ -6,7 +6,7 @@ import { NM1_SEGMENTPROVIDER, N3N4_SEGMENTNAME, NM1_SEGMENTNAME, DMG_SEGMENTNAME
 import {Nm1Segment} from '../entity/nm1Segment';
 import { SegmentRefComponent } from '../segment-ref/segment-ref.component';
 import {EncounterEditorProviderConfig} from './encounter-editor-provider-config';
-import { EncounterEditorClaimConfig, PWK_SEGMENTNAME } from './encounter-editor-claim-config';
+import { EncounterEditorClaimConfig, CLM_SEGMENTNAME } from './encounter-editor-claim-config';
 import { PwkSegment } from '../entity/pwkSegment';
 import { DmgSegment } from '../entity/dmgSegment';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
@@ -25,7 +25,7 @@ export class EncounterEditorComponent implements OnInit {
 
   selectedTypeOfX12: string;
   selectedTypeOf837: string;
-
+  public currentActiveIndex = 0 ;
   constructor(private injector: Injector) {
   }
   getTabs(X12Type) {
@@ -36,6 +36,18 @@ export class EncounterEditorComponent implements OnInit {
     this.selectedTypeOfX12 = '837';
     this.selectedTypeOf837 = 'Professional';
   }
+  handleChange(e) {
+    console.log ('ChangeEvent: current index is: ' + this.currentActiveIndex);
+    console.log ('ChangeEvent: change to index is: ' + e.index);
+    this.currentActiveIndex = e.index;
 
+  }
+
+  handleClose(e) {
+    console.log ('CloseEvent: current index is: ' + this.currentActiveIndex);
+    console.log ('CloseEvent: change to index is: ' + e.index);
+    this.currentActiveIndex = e.index;
+
+  }
 }
 
